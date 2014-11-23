@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example</title>
+        <script src="resize.js"></script>
+        <script src="../pixel-sprite-generator-v0.0.1.js"></script>
+        <style type="text/css" media="screen">
+            canvas {
+              padding: 5px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <script type="text/javascript" charset="utf-8">
+            var SPRITE_SCALE = 2;
+            var SPRITE_COUNT = 200;
+
+            var spaceship = new Mask([
+                    0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 1, 1,
+                    0, 0, 0, 0, 1,-1,
+                    0, 0, 0, 1, 1,-1,
+                    0, 0, 0, 1, 1,-1,
+                    0, 0, 1, 1, 1,-1,
+                    0, 1, 1, 1, 2, 2,
+                    0, 1, 1, 1, 2, 2,
+                    0, 1, 1, 1, 2, 2,
+                    0, 1, 1, 1, 1,-1,
+                    0, 0, 0, 1, 1, 1,
+                    0, 0, 0, 0, 0, 0
+                    ], 6, 12, true, false);
+
+            var bug = new Mask([
+                    0, 0, 0, 0, 0, 0,
+                    0,-1, 1, 1, 1, 1,
+                    0, 1,-1, 1, 1,-1,
+                    0, 1, 1,-1, 1,-1,
+                    0, 1, 1, 1, 1,-1,
+                    0, 1, 1, 1, 1,-1,
+                    0, 1, 1, 1, 2, 2,
+                    0, 1, 1, 1, 2, 2,
+                    0, 1, 1, 1, 2, 2,
+                    0, 1, 1, 1, 1,-1,
+                    0, 1, 1, 1, 1, 1,
+                    0,-1, 1, 0, 0, 0
+                    ], 6, 12, true, false);
+
+            var robot = new Mask([
+                    0, 0, 0, 0,
+                    0, 1, 1, 1,
+                    0, 1, 1, 2,
+                    0, 0, 1, 2,
+                    0, 0, 0, 2,
+                    0, 1, 1, 2,
+                    0, 1, 1, 2,
+                    0, 0, 0, 2,
+                    0, 0, 0, 2,
+                    0, 1, 2, 2,
+                    1, 1, 1, 1
+                    ], 4, 12, true, false);
+
+            var i, sprite;
+            for (i = 0; i < SPRITE_COUNT; i++) {
+                sprite = new Sprite(spaceship);
+                document.body.appendChild(resize(sprite.canvas, SPRITE_SCALE));
+            }
+
+            document.body.appendChild(document.createElement('hr'));
+
+            for (i = 0; i < SPRITE_COUNT; i++) {
+                sprite = new Sprite(robot);
+                document.body.appendChild(resize(sprite.canvas, SPRITE_SCALE));
+            }
+
+            document.body.appendChild(document.createElement('hr'));
+
+            for (i = 0; i < SPRITE_COUNT; i++) {
+                sprite = new Sprite(bug);
+                document.body.appendChild(resize(sprite.canvas, SPRITE_SCALE));
+            }
+        </script>
+    </body>
+</html>
