@@ -1,11 +1,17 @@
 /**
  * Pixel Sprite Generator v0.0.1
  *
- * This is a JavaScript version of that implementation behind David Bollinger's
- * pixelrobots and pixelspaceships algorithm.
+ * This is a JavaScript version of David Bollinger's pixelrobots and
+ * pixelspaceships algorithm.
  *
+ * More info:
  * http://www.davebollinger.com/works/pixelrobots/
  * http://www.davebollinger.com/works/pixelspaceships/
+ *
+ * Archived website (links above are down):
+ * http://web.archive.org/web/20080228054405/http://www.davebollinger.com/works/pixelrobots/
+ * http://web.archive.org/web/20080228054410/http://www.davebollinger.com/works/pixelspaceships/
+ *
  */
 
 /**
