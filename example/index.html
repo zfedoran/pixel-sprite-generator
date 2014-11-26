@@ -13,8 +13,8 @@
 
     <body>
         <script type="text/javascript" charset="utf-8">
-            var SPRITE_SCALE = 2;
-            var SPRITE_COUNT = 200;
+            var SPRITE_SCALE = 3;
+            var SPRITE_COUNT = 20;
 
             var spaceship = new Mask([
                     0, 0, 0, 0, 0, 0,
@@ -29,54 +29,54 @@
                     0, 1, 1, 1, 1,-1,
                     0, 0, 0, 1, 1, 1,
                     0, 0, 0, 0, 0, 0
-                    ], 6, 12, true, false);
+            ], 6, 12, true, false);
 
-            var bug = new Mask([
-                    0, 0, 0, 0, 0, 0,
-                    0,-1, 1, 1, 1, 1,
-                    0, 1,-1, 1, 1,-1,
-                    0, 1, 1,-1, 1,-1,
-                    0, 1, 1, 1, 1,-1,
-                    0, 1, 1, 1, 1,-1,
-                    0, 1, 1, 1, 2, 2,
-                    0, 1, 1, 1, 2, 2,
-                    0, 1, 1, 1, 2, 2,
-                    0, 1, 1, 1, 1,-1,
-                    0, 1, 1, 1, 1, 1,
-                    0,-1, 1, 0, 0, 0
-                    ], 6, 12, true, false);
-
+            var dragon = new Mask([
+                    0,0,0,0,0,0,0,0,0,0,0,0,
+                    0,0,0,0,1,1,1,1,0,0,0,0,
+                    0,0,0,1,1,2,2,1,1,0,0,0,
+                    0,0,1,1,1,2,2,1,1,1,0,0,
+                    0,0,0,0,1,1,1,1,1,1,1,0,
+                    0,0,0,0,0,0,1,1,1,1,1,0,
+                    0,0,0,0,0,0,1,1,1,1,1,0,
+                    0,0,0,0,1,1,1,1,1,1,1,0,
+                    0,0,1,1,1,1,1,1,1,1,0,0,
+                    0,0,0,1,1,1,1,1,1,0,0,0,
+                    0,0,0,0,1,1,1,1,0,0,0,0,
+                    0,0,0,0,0,0,0,0,0,0,0,0
+            ], 12, 12, false, false); 
+                    
             var robot = new Mask([
                     0, 0, 0, 0,
                     0, 1, 1, 1,
-                    0, 1, 1, 2,
+                    0, 1, 2, 2,
                     0, 0, 1, 2,
                     0, 0, 0, 2,
-                    0, 1, 1, 2,
+                    1, 1, 1, 2,
                     0, 1, 1, 2,
                     0, 0, 0, 2,
                     0, 0, 0, 2,
                     0, 1, 2, 2,
-                    1, 1, 1, 1
-                    ], 4, 12, true, false);
+                    1, 1, 0, 0
+            ], 4, 11, true, false);
 
             var i, sprite;
             for (i = 0; i < SPRITE_COUNT; i++) {
-                sprite = new Sprite(spaceship);
+                sprite = new Sprite(spaceship, true);
                 document.body.appendChild(resize(sprite.canvas, SPRITE_SCALE));
             }
 
             document.body.appendChild(document.createElement('hr'));
 
             for (i = 0; i < SPRITE_COUNT; i++) {
-                sprite = new Sprite(robot);
+                sprite = new Sprite(dragon, true);
                 document.body.appendChild(resize(sprite.canvas, SPRITE_SCALE));
             }
 
             document.body.appendChild(document.createElement('hr'));
 
             for (i = 0; i < SPRITE_COUNT; i++) {
-                sprite = new Sprite(bug);
+                sprite = new Sprite(robot, true);
                 document.body.appendChild(resize(sprite.canvas, SPRITE_SCALE));
             }
         </script>

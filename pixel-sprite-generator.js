@@ -50,11 +50,12 @@ function Mask(data, width, height, mirrorX, mirrorY) {
 *   @param {mask}
 *   @constructor
 */
-function Sprite(mask) {
-    this.width  = mask.width * (mask.mirrorX ? 2 : 1);
-    this.height = mask.height * (mask.mirrorY ? 2 : 1);
-    this.mask   = mask;
-    this.data   = new Array(this.width * this.height);
+function Sprite(mask, isColored) {
+    this.width     = mask.width * (mask.mirrorX ? 2 : 1);
+    this.height    = mask.height * (mask.mirrorY ? 2 : 1);
+    this.mask      = mask;
+    this.data      = new Array(this.width * this.height);
+    this.isColored = isColored;
 
     this.init();
 }
@@ -79,7 +80,7 @@ Sprite.prototype.init = function() {
     }
 
     if (this.mask.mirrorY) {
-        this.mirrorX();
+        this.mirrorY();
     }
 
     this.generateEdges();
@@ -298,27 +299,111 @@ Sprite.prototype.generateEdges = function() {
 *   @returns {undefined}
 */
 Sprite.prototype.renderPixelData = function() {
-    var x, y;
-    for (y = 0; y < this.height; y++) {
-        for (x = 0; x < this.width; x++) {
-            var val = this.getData(x, y);
+    var isVerticalGradient = Math.random() > 0.5;
+    var saturation         = Math.random() * 0.5;
+    var hue                = Math.random();
 
-            var a = 1;
-            var r = val === -1 ? 0 : 1;
-            var g = val === -1 ? 0 : 1;
-            var b = val === -1 ? 0 : 1;
+    var u, v, ulen, vlen;
+    if (isVerticalGradient) {
+        ulen = this.height;
+        vlen = this.width;
+    } else {
+        ulen = this.width;
+        vlen = this.height;
+    }
 
-            var index = (y * this.width + x) * 4;
+    for (u = 0; u < ulen; u++) {
+        // Create a non-uniform random number between 0 and 1 (lower numbers more likely)
+        var isNewColor = Math.abs(((Math.random() * 2 - 1) 
+                                 + (Math.random() * 2 - 1) 
+                                 + (Math.random() * 2 - 1)) / 3);
 
-            this.pixels.data[index+0] = r * 255;
-            this.pixels.data[index+1] = g * 255;
-            this.pixels.data[index+2] = b * 255;
-            this.pixels.data[index+3] = a * 255;
+        // Only change the color sometimes (values above 0.8 are less likely than others)
+        if (isNewColor > 0.8) {
+            hue = Math.random();
+        }
+
+        for (v = 0; v < vlen; v++) {
+            var val, index;
+            if (isVerticalGradient) {
+                val   = this.getData(v, u);
+                index = (u * vlen + v) * 4;
+            } else {
+                val   = this.getData(u, v);
+                index = (v * ulen + u) * 4;
+            }
+
+            var rgb = { r: 1, g: 1, b: 1 };
+
+            if (val !== 0) {
+                if (this.isColored) {
+                    // Fade brightness away towards the edges
+                    var brightness = Math.sin((u / ulen) * Math.PI) * 0.7 + Math.random() * 0.3;
+
+                    // Get the RGB color value
+                    this.hslToRgb(hue, saturation, brightness, /*out*/ rgb);
+
+                    // If this is an edge, then darken the pixel
+                    if (val === -1) {
+                        rgb.r *= 0.3;
+                        rgb.g *= 0.3;
+                        rgb.b *= 0.3;
+                    }
+
+                }  else {
+                    // Not colored, simply output black
+                    if (val === -1) {
+                        rgb.r = 0;
+                        rgb.g = 0;
+                        rgb.b = 0;
+                    }
+                }
+            }
+
+            this.pixels.data[index + 0] = rgb.r * 255;
+            this.pixels.data[index + 1] = rgb.g * 255;
+            this.pixels.data[index + 2] = rgb.b * 255;
+            this.pixels.data[index + 3] = 255;
         }
     }
 
     this.ctx.putImageData(this.pixels, 0, 0);
 };
+
+
+/**
+*   This method converts HSL color values to RGB color values.
+*
+*   @method hslToRgb
+*   @param {h}
+*   @param {s}
+*   @param {l}
+*   @param {result}
+*   @returns {result}
+*/
+Sprite.prototype.hslToRgb = function(h, s, l, result) {
+    if (typeof result === 'undefined') {
+        result = { r: 0, g: 0, b: 0 };
+    }
+
+    var i, f, p, q, t;
+    i = Math.floor(h * 6);
+    f = h * 6 - i;
+    p = l * (1 - s);
+    q = l * (1 - f * s);
+    t = l * (1 - (1 - f) * s);
+    
+    switch (i % 6) {
+        case 0: result.r = l, result.g = t, result.b = p; break;
+        case 1: result.r = q, result.g = l, result.b = p; break;
+        case 2: result.r = p, result.g = l, result.b = t; break;
+        case 3: result.r = p, result.g = q, result.b = l; break;
+        case 4: result.r = t, result.g = p, result.b = l; break;
+        case 5: result.r = l, result.g = p, result.b = q; break;
+    }
+
+    return result;
+}
 
 /**
 *   This method converts the template data to a string value for debugging
