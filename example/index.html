@@ -8,15 +8,25 @@
             canvas {
               padding: 5px;
             }
+            div {
+              padding: 10px 0 15px 0;
+              font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+              font-size: 12px;
+            }
+            hr {
+              border: none;
+              border-top: 1px solid orange;
+            }
         </style>
     </head>
 
     <body>
         <script type="text/javascript" charset="utf-8">
-            var SPRITE_SCALE = 3;
-            var SPRITE_COUNT = 20;
+            
+            var SPRITE_SCALE = 2;
+            var SPRITE_COUNT = 100;
 
-            var spaceship = new Mask([
+            var spaceship = new psg.Mask([
                     0, 0, 0, 0, 0, 0,
                     0, 0, 0, 0, 1, 1,
                     0, 0, 0, 0, 1,-1,
@@ -31,7 +41,7 @@
                     0, 0, 0, 0, 0, 0
             ], 6, 12, true, false);
 
-            var dragon = new Mask([
+            var dragon = new psg.Mask([
                     0,0,0,0,0,0,0,0,0,0,0,0,
                     0,0,0,0,1,1,1,1,0,0,0,0,
                     0,0,0,1,1,2,2,1,1,0,0,0,
@@ -46,7 +56,7 @@
                     0,0,0,0,0,0,0,0,0,0,0,0
             ], 12, 12, false, false); 
                     
-            var robot = new Mask([
+            var robot = new psg.Mask([
                     0, 0, 0, 0,
                     0, 1, 1, 1,
                     0, 1, 2, 2,
@@ -60,25 +70,82 @@
                     1, 1, 0, 0
             ], 4, 11, true, false);
 
-            var i, sprite;
+            var fragment = document.createDocumentFragment();
+
+            var i, sprite, div;
+
+            // Example 1
+            div = document.createElement('div');
+            div.innerText = 'Colored ship sprites';
+            div.appendChild(document.createElement('hr'));
+            
             for (i = 0; i < SPRITE_COUNT; i++) {
-                sprite = new Sprite(spaceship, true);
-                document.body.appendChild(resize(sprite.canvas, SPRITE_SCALE));
+                sprite = new psg.Sprite(spaceship, {
+                    colored         : true
+                });
+                div.appendChild(resize(sprite.canvas, SPRITE_SCALE));
             }
 
-            document.body.appendChild(document.createElement('hr'));
-
+            fragment.appendChild(div);
+            
+            // Example 2
+            div = document.createElement('div');
+            div.innerText = 'Colored ship sprites (with low saturation)';
+            div.appendChild(document.createElement('hr'));
+            
             for (i = 0; i < SPRITE_COUNT; i++) {
-                sprite = new Sprite(dragon, true);
-                document.body.appendChild(resize(sprite.canvas, SPRITE_SCALE));
+                sprite = new psg.Sprite(spaceship, {
+                    colored         : true,
+                    saturation      : 0.1
+                });
+                div.appendChild(resize(sprite.canvas, SPRITE_SCALE));
             }
 
-            document.body.appendChild(document.createElement('hr'));
+            fragment.appendChild(div);
+
+            // Example 3
+            div = document.createElement('div');
+            div.innerText = 'Colored ship sprites (with many color variations per ship)';
+            div.appendChild(document.createElement('hr'));
+            
+            for (i = 0; i < SPRITE_COUNT; i++) {
+                sprite = new psg.Sprite(spaceship, {
+                    colored         : true,
+                    colorVariations : 0.9,
+                    saturation      : 0.8
+                });
+                div.appendChild(resize(sprite.canvas, SPRITE_SCALE));
+            }
+
+            fragment.appendChild(div);
+            
+            // Example 4
+            div = document.createElement('div');
+            div.innerText = 'Colored dragon sprites';
+            div.appendChild(document.createElement('hr'));
+            
+            for (i = 0; i < SPRITE_COUNT; i++) {
+                sprite = new psg.Sprite(dragon, {
+                    colored         : true
+                });
+                div.appendChild(resize(sprite.canvas, SPRITE_SCALE));
+            }
+
+            fragment.appendChild(div);
+
+            // Example 5
+            div = document.createElement('div');
+            div.innerText = 'Black & white robot sprites';
+            div.appendChild(document.createElement('hr'));
 
             for (i = 0; i < SPRITE_COUNT; i++) {
-                sprite = new Sprite(robot, true);
-                document.body.appendChild(resize(sprite.canvas, SPRITE_SCALE));
+                sprite = new psg.Sprite(robot);
+                div.appendChild(resize(sprite.canvas, SPRITE_SCALE));
             }
+
+            fragment.appendChild(div);
+
+            document.body.appendChild(fragment);
         </script>
     </body>
 </html>
