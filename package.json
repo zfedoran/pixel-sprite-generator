@@ -1,0 +1,27 @@
+{
+  "name": "pixel-sprite-generator",
+  "version": "0.0.1",
+  "description": "A procedural pixel sprite generator",
+  "main": "pixel-sprite-generator.js",
+  "directories": {
+    "doc": "doc",
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zfedoran/pixel-sprite-generator.git"
+  },
+  "keywords": [
+    "sprite",
+    "gamedev",
+    "procedural"
+  ],
+  "author": "Zelimir Fedoran <zelimir.fedoran@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zfedoran/pixel-sprite-generator/issues"
+  }
+}
