@@ -8,6 +8,22 @@ JavaScript implementation of a procedural pixel sprite generator similar to the 
 
 <a href="http://plnkr.co/edit/Dji8rljS0yDL16Ao8Iq6?p=preview"><img src="https://github.com/zfedoran/pixel-sprite-generator/raw/master/doc/screenshot.png"></a>
 
+## Installation
+
+####Using Bower
+If you have [bower](http://bower.io/) installed, you can add the pixel-sprite-generator to your project using the following command.
+
+```
+bower install pixel-sprite-generator
+```
+
+####Using NPM
+If you have [npm](https://www.npmjs.org/) installed, you can add the pixel-sprite-generator to your project using the following command.
+
+```
+npm install pixel-sprite-generator
+```
+
 ##Other Languages
 - [Dart pixel-sprite-generator](https://github.com/tobbel/pixel-sprite-generator) port by [tobbel](https://github.com/tobbel)
 - [Haxel pixel-sprite-generator](https://github.com/Zielak/pixel-sprite-generator) port by [Zielak](https://github.com/Zielak)
