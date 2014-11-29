@@ -1,7 +1,7 @@
 {
   "name": "pixel-sprite-generator",
   "main": "pixel-sprite-generator.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/zfedoran/pixel-sprite-generator",
   "authors": [
     "Zelimir Fedoran <zelimir.fedoran@gmail.com>"

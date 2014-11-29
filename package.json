@@ -1,6 +1,6 @@
 {
   "name": "pixel-sprite-generator",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A procedural pixel sprite generator",
   "main": "pixel-sprite-generator.js",
   "directories": {
