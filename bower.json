@@ -1,0 +1,23 @@
+{
+  "name": "pixel-sprite-generator",
+  "main": "pixel-sprite-generator.js",
+  "version": "0.0.1",
+  "homepage": "https://github.com/zfedoran/pixel-sprite-generator",
+  "authors": [
+    "Zelimir Fedoran <zelimir.fedoran@gmail.com>"
+  ],
+  "description": "A procedural pixel sprite generator",
+  "keywords": [
+    "sprite",
+    "gamedev",
+    "procedural"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
