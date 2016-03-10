@@ -25,8 +25,9 @@ npm install pixel-sprite-generator
 ```
 
 ##Other Languages
-- [Dart pixel-sprite-generator](https://github.com/tobbel/pixel-sprite-generator) port by [tobbel](https://github.com/tobbel)
-- [Haxe pixel-sprite-generator](https://github.com/Zielak/pixel-sprite-generator) port by [Zielak](https://github.com/Zielak)
+- Dart [pixel-sprite-generator](https://github.com/tobbel/pixel-sprite-generator) port by [tobbel](https://github.com/tobbel)
+- Haxe [pixel-sprite-generator](https://github.com/Zielak/pixel-sprite-generator) port by [Zielak](https://github.com/Zielak)
+- C# [pixel-sprite-generator](https://github.com/BenMcLean/Pixel-Sprite-Generator-CSharp) port by [BenMcLean](https://github.com/BenMcLean)
 
 ##Algorithm
 
