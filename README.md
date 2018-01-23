@@ -31,6 +31,7 @@ npm install pixel-sprite-generator
 - libGDX [pixel-sprite-generator](https://github.com/BenMcLean/pixel-sprite-generator-libgdx) port by [BenMcLean](https://github.com/BenMcLean)
 - Unity3d [pixel-sprite-generator](https://github.com/Shogan/PixelSpriteGenerator-Unity) port by [Shogan](https://github.com/Shogan)
 - Node.js [pixel-sprite-generator](https://github.com/blipn/pixel-sprite-generator-nodejs) port by [blipn](https://github.com/blipn)
+- Rust [sprite-gen](https://github.com/tversteeg/sprite-gen) port (with editor) by [tversteeg](https://github.com/tversteeg)
 
 ## Algorithm
 
