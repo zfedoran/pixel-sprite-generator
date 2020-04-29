@@ -367,7 +367,8 @@
                     index = (v * ulen + u) * 4;
                 }
 
-                var rgb = { r: 1, g: 1, b: 1 };
+                // Red, green, blue, alpha
+                var rgba = { r: 1, g: 1, b: 1, a: 1 };
 
                 if (val !== 0) {
                     if (this.options.colored) {
@@ -376,29 +377,33 @@
                                        + Math.random() * this.options.brightnessNoise;
 
                         // Get the RGB color value
-                        this.hslToRgb(hue, saturation, brightness, /*out*/ rgb);
+                        this.hslToRgb(hue, saturation, brightness, /*out*/ rgba);
 
                         // If this is an edge, then darken the pixel
                         if (val === -1) {
-                            rgb.r *= this.options.edgeBrightness;
-                            rgb.g *= this.options.edgeBrightness;
-                            rgb.b *= this.options.edgeBrightness;
+                            rgba.r *= this.options.edgeBrightness;
+                            rgba.g *= this.options.edgeBrightness;
+                            rgba.b *= this.options.edgeBrightness;
                         }
 
                     }  else {
                         // Not colored, simply output black
                         if (val === -1) {
-                            rgb.r = 0;
-                            rgb.g = 0;
-                            rgb.b = 0;
+                            rgba.r = 0;
+                            rgba.g = 0;
+                            rgba.b = 0;
                         }
                     }
                 }
+                else {
+                    // value '0' (ie. the background), make transparent 
+                    rgba.a = 0;
+                }
 
-                this.pixels.data[index + 0] = rgb.r * 255;
-                this.pixels.data[index + 1] = rgb.g * 255;
-                this.pixels.data[index + 2] = rgb.b * 255;
-                this.pixels.data[index + 3] = 255;
+                this.pixels.data[index + 0] = rgba.r * 255;
+                this.pixels.data[index + 1] = rgba.g * 255;
+                this.pixels.data[index + 2] = rgba.b * 255;
+                this.pixels.data[index + 3] = rgba.a * 255;
             }
         }
 
@@ -438,6 +443,37 @@
         }
 
         return result;
+    };
+
+    // Resizes the image by a scale
+    // Too useful to be just an example, 
+    // see https://github.com/zfedoran/pixel-sprite-generator/blob/master/example/resize.js
+    Sprite.prototype.resize = function( scale ) {
+        var widthScaled  = this.width * scale;
+        var heightScaled = this.height * scale;
+        
+        var orig    = document.createElement('canvas');
+        orig.width  = this.width;
+        orig.height = this.height;
+        var origCtx = orig.getContext('2d');
+        origCtx.drawImage(this.canvas, 0, 0);
+        var origPixels   = origCtx.getImageData(0, 0, this.width, this.height);
+        this.canvas.width = widthScaled;
+        this.canvas.height = heightScaled;
+        var scaledCtx    = this.canvas.getContext('2d');
+        var scaledPixels = scaledCtx.getImageData( 0, 0, widthScaled, heightScaled );
+        for( var y = 0; y < heightScaled; y++ ) {
+            for( var x = 0; x < widthScaled; x++ ) {
+                var index = (Math.floor(y / scale) * this.width + Math.floor(x / scale)) * 4;
+                var indexScaled = (y * widthScaled + x) * 4;
+
+                scaledPixels.data[ indexScaled ]   = origPixels.data[ index ];
+                scaledPixels.data[ indexScaled+1 ] = origPixels.data[ index+1 ];
+                scaledPixels.data[ indexScaled+2 ] = origPixels.data[ index+2 ];
+                scaledPixels.data[ indexScaled+3 ] = origPixels.data[ index+3 ];
+            }
+        }
+        this.ctx.putImageData( scaledPixels, 0, 0 );
     };
 
     /**
