@@ -34,6 +34,8 @@ npm install pixel-sprite-generator
 - Node.js/Browser [pixel-sprite-generator](https://github.com/seiyria/mixel) port by [seiyria](https://github.com/seiyria)
 - Rust [sprite-gen](https://github.com/tversteeg/sprite-gen) port (with editor) by [tversteeg](https://github.com/tversteeg)
 - OCaml [px_sprite_gen](https://github.com/fccm/px_sprite_gen) port by [Florent Monnier](https://github.com/fccm)
+- Python [Sprite-Generator](https://github.com/MaartenGr/Sprite-Generator) port by [MaartenGr](https://github.com/MaartenGr)
+
 
 ## Algorithm
 
