@@ -25,16 +25,19 @@ npm install pixel-sprite-generator
 ```
 
 ## Ports/Other Languages
-- Dart [pixel-sprite-generator](https://github.com/tobbel/pixel-sprite-generator) port by [tobbel](https://github.com/tobbel)
-- Haxe [pixel-sprite-generator](https://github.com/Zielak/pixel-sprite-generator) port by [Zielak](https://github.com/Zielak)
-- C# [pixel-sprite-generator](https://github.com/BenMcLean/Pixel-Sprite-Generator-CSharp) port by [BenMcLean](https://github.com/BenMcLean)
-- libGDX [pixel-sprite-generator](https://github.com/BenMcLean/pixel-sprite-generator-libgdx) port by [BenMcLean](https://github.com/BenMcLean)
-- Unity3d [pixel-sprite-generator](https://github.com/Shogan/PixelSpriteGenerator-Unity) port by [Shogan](https://github.com/Shogan)
-- Node.js [pixel-sprite-generator](https://github.com/blipn/pixel-sprite-generator-nodejs) port by [blipn](https://github.com/blipn)
-- Node.js/Browser [pixel-sprite-generator](https://github.com/seiyria/mixel) port by [seiyria](https://github.com/seiyria)
-- Rust [sprite-gen](https://github.com/tversteeg/sprite-gen) port (with editor) by [tversteeg](https://github.com/tversteeg)
-- OCaml [px_sprite_gen](https://github.com/fccm/px_sprite_gen) port by [Florent Monnier](https://github.com/fccm)
-- Python [Sprite-Generator](https://github.com/MaartenGr/Sprite-Generator) port by [MaartenGr](https://github.com/MaartenGr)
+- Dart [tobbel/pixel-sprite-generator](https://github.com/tobbel/pixel-sprite-generator) port by [tobbel](https://github.com/tobbel)
+- Haxe [Zielak/pixel-sprite-generator](https://github.com/Zielak/pixel-sprite-generator) port by [Zielak](https://github.com/Zielak)
+- C# [BenMcLean/Pixel-Sprite-Generator-CSharp](https://github.com/BenMcLean/Pixel-Sprite-Generator-CSharp) port by [BenMcLean](https://github.com/BenMcLean)
+- libGDX [BenMcLean/pixel-sprite-generator-libgdx](https://github.com/BenMcLean/pixel-sprite-generator-libgdx) port by [BenMcLean](https://github.com/BenMcLean)
+- Unity3d [Shogan/PixelSpriteGenerator-Unity](https://github.com/Shogan/PixelSpriteGenerator-Unity) port by [Shogan](https://github.com/Shogan)
+- Node.js [blipn/pixel-sprite-generator-nodejs](https://github.com/blipn/pixel-sprite-generator-nodejs) port by [blipn](https://github.com/blipn)
+- Node.js/Browser [seiyria/mixel](https://github.com/seiyria/mixel) port by [seiyria](https://github.com/seiyria)
+- Rust [tversteeg/sprite-gen](https://github.com/tversteeg/sprite-gen) port (with editor) by [tversteeg](https://github.com/tversteeg)
+- OCaml [fccm/px_sprite_gen](https://github.com/fccm/px_sprite_gen) port by [Florent Monnier](https://github.com/fccm)
+- Python [MaartenGr/Sprite-Generator](https://github.com/MaartenGr/Sprite-Generator) port by [MaartenGr](https://github.com/MaartenGr)
+
+## Similar Projects
+- Sprator [yurkth/sprator](https://github.com/yurkth/sprator)
 
 
 ## Algorithm
